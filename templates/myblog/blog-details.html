@@ -1,0 +1,461 @@
+{% extends "core.html" %}
+{% comment %} {% include "components/navbar.html" %} {% endcomment %}
+{% load static %}
+<!-- ==================== End Navbar ==================== -->
+{% block blogdetails %}
+<main>
+
+    <!-- ==================== Start Slider ==================== -->
+
+    <header class="page-header blog-header section-padding pb-0">
+        <div class="container mt-80">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="caption">
+                        <div class="sub-title fz-12">
+                            <a href="#0"><span>Marketing</span></a>
+                            <span>,</span>
+                            <a href="#0"><span>Design</span></a>
+                        </div>
+                        <h1 class="fz-55 mt-30">A{{blog.blog_title}}</h1>
+                    </div>
+                    <div class="info d-flex mt-40 align-items-center">
+                        <div class="left-info">
+                            <div class="d-flex">
+                                <div class="author-info">
+                                    <div class="d-flex align-items-center">
+                                        <a href="#0" class="circle-60">
+                                            <img src="{{blog.blog_author.author_dp.url}}" alt="" class="circle-img">
+                                        </a>
+                                        <a href="#0" class="ml-20">
+                                            <span class="opacity-7">Author</span>
+                                            <h6 class="fz-16">{{blog.blog_author}}</h6>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="date ml-50">
+                                    <a href="#0">
+                                        <span class="opacity-7">Published</span>
+                                        <h6 class="fz-16">{{blog.updated_at}}</h6>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-info ml-auto">
+                            <div>
+                                <span class="pe-7s-comment fz-18 mr-10"></span>
+                                <span class="opacity-7">{{number_of_comments}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="background bg-img parallaxie mt-80" data-background="{{blog.blog_cover.url}}"></div>
+    </header>
+
+    <!-- ==================== End Slider ==================== -->
+
+
+
+    <!-- ==================== Start Blog ==================== -->
+
+    <section class="blog section-padding pb-0">
+        <div class="container">
+            <div class="main-post">
+                <div class="item pb-60">
+                    <div>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="text">
+                                    <div class="d-flex align-items-center">
+                                        <span
+                                            class="fz-60 fw-600 main-color line-height-1 mr-10">{{blog.blog_content|slice:1}}</span>
+                                        <p>{{blog.blog_content}}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="post-qoute mt-50">
+                                <h6 class="fz-20">
+                                    <span class="l-block">{{blog.quotes}}</span>
+                                    <span class="sub-title main-color mt-20 mb-0"> - {{blog.blog_author}}</span>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-50 mt-50">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="iner-img sm-mb30">
+                                    <img src="{{blog.blog_image_one.url}}" alt="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="iner-img">
+                                    <img src="{{blog.blog_image_two.url}}" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="info-area flex mt-20 pb-20">
+                    <div>
+                        <div class="tags flex">
+                            <div class="valign">
+                                <span>Tags :</span>
+                            </div>
+                            <div>
+                                <a href="blog-classic.html">Tech</a>
+                                <a href="blog-classic.html">Programming</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Like dislie functionality for blogs -->
+                    <div class="ml-auto">
+                        <div class="share-icon flex">
+                            <div class="valign">
+                                <span>Feedback:</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center">
+                                {% if user.is_authenticated %}
+                                <form id="like-form" action="{% url 'like_blog' blog.slug %}" method="post">
+                                    {% csrf_token %}
+                                    <a href="#" id="like-btn" data-slug="{{ blog.slug }}">
+                                        <i class="fa-regular fa-thumbs-up"><span class="ml-4" id="like-count">{{ blog.likes }}</span></i>
+                                    </a>
+                                </form>
+
+
+                                <form id="dislike-form" action="{% url 'dislike_blog' blog.slug %}" method="post">
+                                    {% csrf_token %}
+                                    <a href="#" id="dislike-btn" data-slug="{{ blog.slug }}">
+                                        <i class="fa-regular fa-thumbs-down"><span class="ml-4" id="dislike-count">{{ blog.dislikes }}</span></i>
+                                    </a>
+                                </form>
+                                {% else %}
+                                <a href="{% url 'Login' %}">
+                                    <i class="fa-solid fa-user"></i></i>
+                                </a>
+
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="ml-auto">
+                        <div class="share-icon flex">
+                            <div class="valign">
+                                <span>Share :</span>
+                            </div>
+                            <div>
+                                <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
+                                <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="author-area mt-50">
+                    <div class="flex">
+                        <div class="author-img mr-30">
+                            <div class="img">
+                                <img src="{{blog.blog_author.author_dp.url}}" alt="" class="circle-img">
+                            </div>
+                        </div>
+                        <div class="cont valign">
+                            <div class="full-width">
+                                <h6 class="fw-600 mb-10">{{blog.blog_author}}</h6>
+                                <p>{{blog.quotes}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next & Previous blog -->
+                <div class="next-prv-post flex mt-50">
+
+                    {% if prev_blog %}
+                    <div class="thumb-post bg-img" data-background="{{prev_blog.blog_cover.url}}">
+                        <a href="{% url 'BlogDetails' prev_blog.slug %}">
+                            <span class="fz-12 text-u ls1 main-color mb-15"><i class="pe-7s-angle-left"></i>
+                                Prev Post</span>
+                            <h6 class="fw-600 fz-16">{{ prev_blog.blog_title }}</h6>
+                        </a>
+                    </div>
+                    {% endif %}
+
+                    {% if next_blog %}
+                    <div class="thumb-post ml-auto text-right bg-img" data-background="{{next_blog.blog_cover.url}}">
+                        <a href="{% url 'BlogDetails' next_blog.slug %}">
+                            <span class="fz-12 text-u ls1 main-color mb-15">Next Post <i
+                                    class="pe-7s-angle-right"></i></span>
+                            <h6 class="fw-600 fz-16">{{ next_blog.blog_title }}</h6>
+                        </a>
+                    </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-posts blog-list-half crev sub-bg section-padding mt-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="mb-60">
+                            <h3>Recent Posts</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    {% for recent_post in recent_posts %}
+                    <div class="col-lg-6 md-mb50">
+                        <div class="item mb-30">
+                            <div class="row rest">
+                                <div class="col-md-6">
+                                    <div class="img">
+                                        <img src="{{recent_post.blog_cover.url}}" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 valign">
+                                    <div class="cont">
+                                        <span class="date fz-12 ls1 text-u opacity-7 mb-15">August 6, 2022</span>
+                                        <h5>
+                                            <a href="#0">{{recent_post.blog_title}}</a>
+                                        </h5>
+                                        <div class="tags colorbg mt-15">
+                                            <a href="">Marketing</a>
+                                            <a href="">Design</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="comments-post section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-11">
+                        <div class="text mb-60">
+                            <h3>Comments</h3>
+                        </div>
+                    </div>
+                </div>
+
+               
+                    <div class="row justify-content-center">
+                        <div class="col-lg-11">
+                            <!-- Loop through comments -->
+                            {% for comment in blog.comments.all %}
+                            <div class="item-box">
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="flex">
+                                            <div class="user-img mr-30">
+                                                <div class="img circle-80 line-height-1">
+                                                    <img src="{% static 'assets/imgs/blog/author1.jpg' %}" alt="" class="circle-img">
+                                                </div>
+                                            </div>
+                                            <div class="cont">
+                                                <h6 class="line-height-1">{{ comment.user_name }}</h6>
+                                                <span class="fz-12 ls1 text-u mb-15">{{ comment.created_at }}</span>
+                                                <p class="fz-14">{{ comment.message }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                        <!-- This form is used for reply the comments -->
+
+                                    <form method="post" action="{% url 'AddSubComment' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="post_slug" value="{{ blog.slug }}">
+                                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+
+                                        <!-- Add input fields for name and email -->
+                                        <input type="text" name="name" placeholder="Your Name" required>
+                                        <input type="email" name="email" placeholder="Your Email" required>
+                                        <textarea name="message" placeholder="Add your reply" required></textarea>
+                                        <button type="submit">Reply</button>
+                                    </form>
+                                </div>
+                            </div>
+            
+                            <!-- Loop through subcomments of each comment -->
+                            {% for subcomment in comment.subcomments.all %}
+                            <div class="item-box replayed">
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="flex">
+                                            <div class="user-img mr-30">
+                                                <div class="img circle-80 line-height-1">
+                                                    <img src="{% static 'assets/imgs/blog/author1.jpg' %}" alt="" class="circle-img">
+                                                </div>
+                                            </div>
+                                            <div class="cont">
+                                                <h6 class="line-height-1">{{ subcomment.user_name }}</h6>
+                                                <span class="fz-12 ls1 text-u mb-15">{{ subcomment.created_at }}</span>
+                                                <p class="fz-14">{{ subcomment.message }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 d-flex align-items-center">
+                                        <div class="replay-post ml-auto">
+                                            <a href="#0" class="reply-button" data-parent-id="{{ comment.id }}">
+                                                <span>Reply</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            {% endfor %}
+            
+                            <!-- Hidden reply form template -->
+                            {% comment %} <div id="reply-form-template" class="d-none">
+                                <form method="post" action="{% url 'AddComment' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="post_slug" value="{{ blog.slug }}">
+                                    <input type="hidden" name="parent_id" id="parent_id" value="">
+            
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group mb-30">
+                                                <textarea id="reply_message" name="message" placeholder="Your Reply" rows="3" required="required"></textarea>
+                                            </div>
+            
+                                            <div class="col-lg-3 d-flex align-items-center">
+                                                <div class="replay-post ml-auto">
+                                                    <button type="submit" class="reply-button">
+                                                        <span>Submit Reply</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div> {% endcomment %}
+
+
+                            <div id="reply-form-template" class="d-none">
+
+                            <form method="post" action="{% url 'AddSubComment' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="post_slug" value="{{ blog.slug }}">
+                                <input type="hidden" name="parent_id" id="parent_id" value="">
+
+                                <!-- Add input fields for name and email -->
+                                <input type="text" name="name" placeholder="Your Name" required>
+                                <input type="email" name="email" placeholder="Your Email" required>
+                                <textarea id="reply_message" name="message" placeholder="Your Reply" rows="3" required="required"></textarea>
+
+                                <button type="submit">Reply</button>
+                            </form>
+
+                            
+                            <!-- /Hidden reply form template -->
+                        </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        
+
+        <div class="comments-from section-padding sub-bg">
+            {% if user.is_authenticated %}
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-11">
+                            <div class="text mb-60">
+                                <h3>Leave a comment</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-11">
+                            <form method="post" action="{% url 'AddComment' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="post_slug" value="{{ blog.slug }}">
+                                <input type="hidden" name="parent_id" value="{{ parent_comment_id }}">
+                                <!-- Isko dynamically set karo -->
+
+                                <div class="messages"></div>
+                                <div class="controls row">
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-30">
+                                            <input id="form_name" type="text" name="name" placeholder="Name"
+                                                required="required">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-30">
+                                            <input id="form_email" type="email" name="email" placeholder="Email"
+                                                required="required">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group mb-30">
+                                            <textarea id="form_message" name="message" placeholder="Message" rows="4"
+                                                required="required"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 text-center mt-20">
+                                        <button type="submit" class="butn-circle">
+                                            <span class="full-width">
+                                                <span class="full-width">Post A <br> Comment</span>
+                                            </span>
+                                            <img src="{% static 'assets/imgs/svg-assets/circle-star.svg' %}" alt=""
+                                                class="circle-star">
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="mx-5 mt-30 w-75 d-flex justify-content-between">
+                    <a href="{% url 'Login' %}" class="butn butn-full butn-bord radius-30">
+                        <span class="text">Login For Comment</span>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- ==================== End Blog ==================== -->
+
+
+</main>
+{% endblock blogdetails %}
+<!-- ==================== Start Footer ==================== -->
+
+{% comment %} {% include "components/footer.html" %} {% endcomment %}
+
+<!-- ==================== End Footer ==================== -->

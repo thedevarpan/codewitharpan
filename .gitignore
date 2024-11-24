@@ -1,0 +1,83 @@
+envs
+__pycache__
+static/assets/imgs/arch 
+
+
+/arpan/static/assets/imgs/background
+/arpan/static/assets/imgs/brands
+/arpan/static/assets/imgs/team
+/arpan/static/assets/imgs/freelancer
+/arpan/static/assets/imgs/testim
+# navbarbackup-base-iclude.html
+
+# Python build and bytecode files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.db
+*.sqlite3
+*.log
+
+# Virtual environment
+venv/
+env/
+*.env
+*.venv
+*.egg-info/
+dist/
+build/
+*.tar.gz
+*.zip
+pip-log.txt
+
+# Django-specific
+db.sqlite3
+*.sqlite3
+*.DS_Store
+debug.log
+local_settings.py
+*.local_settings.py
+config.ini
+secrets.json
+*.secret.json
+*.pem
+
+# Media and static files
+
+staticfiles/
+*.pdf
+*.docx
+*.xlsx
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.iml
+/digitalstore
+
+# MacOS
+.DS_Store
+
+# Logs and runtime files
+*.log
+*.pid
+*.swp
+*.sublime-workspace
+coverage/
+.coverage
+htmlcov/
+
+# Node modules (if you have frontend dependencies)
+node_modules/
+
+# Test files
+test-results/
+.pytest_cache/
+nosetests.xml
+junit.xml
+
+# Migrations (optional)
+*.mo
+*.pot
+comments-reply.html

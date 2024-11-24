@@ -1,0 +1,242 @@
+{% extends "digitalstore/digitalstore-base.html" %}
+{% block addtocart %}
+{% load static %}
+<!-- Start Inner Banner Wrapper -->
+<section class="inner-banner-wrapper pt-80 pb-80 text-center" style="background-image:url('assets/img/bg.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="inner-banner-wrapper-content">
+                    <h4>Premium WordPress Themes, Web Templates and Many More ...</h4>
+                    <form action="#">
+                        <input type="search" name="search" placeholder="Search Your KeyWords....">
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Inner Banner Wrapper -->
+<!-- Start Breadcrumb Area -->
+<div class="breadcrumb-area pt-30 pb-30 section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-content">
+                    <ul>
+                        <li><a href="index-2.html">Home</a></li>
+                        <li>Add to Cart</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumb Area -->
+<!-- Start Add to Cart Area -->
+<section class="add-to-cart-p section-padding">
+    {% if messages %}
+        <div class="alert alert-info">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+<!-- The rest of the cart table goes here -->
+
+    <div class="container">
+        <!-- Cart Table -->
+        <div class="row table-responsive">
+            
+            <table class="table shopping-cart-tabel table-bordered align-middle table-striped table-hover">
+                <thead>
+                    <tr>
+                        <td>Product</td>
+                        <td>Title</td>
+                        <td>Price</td>
+                        {% comment %} <td>Quantity</td> {% endcomment %}
+                        <td>Total</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- single -->
+                    {% for item in cart_items %}
+                    <tr id="cart-item-{{ item.id }}"> <!-- Unique ID for the item row -->
+                        <td class="text-center product-thumbnail">
+                            <img src="{{ item.product.product_thumbnail.url }}" alt="{{ item.product.product_name }}">
+                        </td>
+                        <td class="text-center product-name">
+                            <a href="#">{{ item.product.product_name }}</a>
+                        </td>
+                        <td class="text-center product-price-cart">
+                            <span>{{ item.product.price }}</span>
+                        </td>
+                        {% comment %} <td class="prodcut-quantity">
+                            <input type="number" name="qu" class="form-control" value="{{ item.quantity }}">
+                        </td> {% endcomment %}
+                        <td class="text-center product-price-cart">
+                            <span>₹{{ item.get_total }}</span>
+                        </td>
+                        <td class="product-remove text-center">
+                            <a href="javascript:void(0);" class="remove-item" data-item-id="{{ item.id }}">
+                                <i class="bi bi-x"></i> <!-- Cart item remove button -->
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+        <!-- Cart Update -->
+        <div class="row mt-30">
+            <div class="col-6 mb-30">
+                <a class="button-1 border-radious-0" href="{% url 'AllProduct' %}">Continue Shopping</a>
+            </div>
+            <div class="col-6 mb-30 text-right">
+                <a class="button-1 border-radious-0" href="#">Update Cart</a>
+            </div>
+        </div>
+
+        <!-- Cart Checkout -->
+        <div class="row cart-page-check-out-area flex-row-reverse pt-4 ">
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header bg-transparent py-3">
+                        <h6 class="m-0 mb-1">Order Total</h6>
+                    </div>
+                    <div class="card-body ">
+                        <ul class="list-unstyled">
+                             <li class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="me-2 text-body">Subtotal</h6><span class="text-end">₹{{ subtotal|floatformat:2 }}</span>
+                            </li>
+
+                    
+
+                            {% if discount > 0 %}
+                                <li class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="me-2 text-body">Discount</h6>
+                                    <span class="text-end">₹{{ discount|floatformat:2 }}</span>
+                                </li>
+
+                                <li class="d-flex justify-content-between align-items-center mb-2">
+                                    <small class="text-body text-muted">Coupon Code: <strong>{{ coupon_code}}</strong> <a href="javascript:void(0);" class="mx-3 remove-coupon" data-coupon-code="{{ coupon_code }}">Remove</a></small>
+                                </li>
+                            {% else %}
+                                <li class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="me-2 text-body">Discount</h6><span class="text-end">₹{{ discount|floatformat:2 }}</span>
+                                </li>
+                            {% endif %}
+
+                             <li class="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
+                                <h6 class="me-2">Grand Total</h6><span class="text-end text-dark">₹{{ grand_total|floatformat:2 }}</span>
+                            </li>
+
+                        </ul>
+                        <div class="d-grid gap-2 pt-25 mx-auto text-center ">
+                            <a class="button-1 border-radious-0" href="{% url 'Checkout' %}">PROCEED TO CHECKOUT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coupon Code -->
+            <div class="col-md-6 col-lg-8">
+                <div class="card">
+                    <div class="card-header bg-transparent py-3">
+                        <h6 class="m-0">Use Coupon Code</h6>
+                    </div>
+                    <div class="card-body ">
+                        {% comment %} <form action="" id="coupon-form"> {% endcomment %}
+                            <form action="{% url 'CartView' %}" method="POST" id="coupon-form"> <!-- Update action URL if necessary -->
+                            {% csrf_token %}
+                            <div class="form-group mb-3">
+                                <labsel class="form-label">Have a Coupon Code?</labsel>
+                                <input type="text" name="coupon-code" id="coupon-code" class="form-control" placeholder="Enter coupon code">
+                                {% comment %} <input type="email" class="form-control" placeholder=""> {% endcomment %}
+                            </div>
+                            <button type="submit" class="button-1 border-radious-0">Apply</button>
+                        </form>
+                         <!-- Display error message if coupon is invalid -->
+                            {% if error_message %}
+                                <div class="alert alert-danger mt-3">{{ error_message }}</div>
+                            {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Add to Cart Area -->
+<!-- Start Subscribe Area -->
+<section class="subscribe-area pt-100 pb-100" style="background-image: url('{% static 'digitalstore/assets/img/sub.png' %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="subscribe-form">
+                    <h3>Subscribe Now!</h3>
+                    <p>Simple pricing plans. Unlimited web maintenance service</p>
+                    <form action="#">
+                        <input type="email" name="email" placeholder="Enter Your Email..">
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Handle the remove item button click event
+        $('.remove-item').on('click', function() {
+            var item_id = $(this).data('item-id');  // Get the item ID from the button
+            console.log("Item ID: ", item_id);  // Debugging: Log item ID
+
+            // Send AJAX request to remove the item
+            $.ajax({
+                url: "{% url 'RemoveFromCart' 0 %}".replace('0', item_id),  // Dynamically set the item ID in the URL
+                type: 'POST',
+                data: {
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token for security
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // On success, remove the item row from the cart table
+                        console.log("Item removed successfully.");  // Debugging: Log success
+                        $('#cart-item-' + item_id).remove();
+                    } else {
+                        console.log("Failed response: ", response);  // Log the response if success is false
+                        alert('Failed to remove the item.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log("AJAX error:", error);  // Log the actual error
+                    alert('Failed to remove the item.');
+                }
+            });
+        });
+    });
+
+
+
+//JavaScript for AJAX Coupon Application
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.remove-coupon').forEach(function(element) {
+        element.addEventListener('click', function() {
+            const couponCode = this.getAttribute('data-coupon-code');
+            // Redirect to a URL or send a form to remove the coupon
+            window.location.href = "{% url 'CartView' %}?remove_coupon=" + couponCode;
+        });
+    });
+});
+
+
+</script>
+
+<!-- End Subscribe Area -->
+{% endblock addtocart %}

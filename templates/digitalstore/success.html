@@ -1,0 +1,107 @@
+{% extends "digitalstore/digitalstore-base.html" %}
+{% block success %}
+{% load static %}
+
+
+<!--
+// v0 by Vercel.
+// https://v0.dev/t/nrjKVs6krNd
+-->
+
+	<!-- Start Inner Banner Wrapper -->
+	<section class="inner-banner-wrapper pt-80 pb-80 text-center" style="background-image:url('assets/img/bg.jpg');">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<div class="inner-banner-wrapper-content">
+						<h4>Premium WordPress Themes, Web Templates and Many More ...</h4>
+						<form action="#">
+							<input type="search" name="search" placeholder="Search Your KeyWords....">
+							<button type="submit"><i class="bi bi-search"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Inner Banner Wrapper -->
+	<!-- Start Breadcrumb Area -->
+	<div class="breadcrumb-area pt-30 pb-30 section-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="breadcrumb-content">
+						<ul>
+							<li><a href="index-2.html">Home</a></li>
+							<li>Add to Cart</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumb Area -->
+	<!-- Start Add to Cart Area -->
+	<section class="add-to-cart-p section-padding">
+		<div class="container">
+			<!-- Cart Table -->
+			<div class="row table-responsive">
+				<table class="table shopping-cart-tabel table-bordered align-middle table-striped table-hover">
+					<thead>
+						<tr>
+							<td>Image</td>
+							<td>Title</td>
+							<td>Order ID</td>
+							<td>Payment Status</td>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- single -->
+                        {% for item in order_items %}
+						<tr>
+							<td class="text-center product-thumbnail">
+								<img src="{{ item.product.product_thumbnail.url }}" alt="product">
+							</td>
+							<td class="text-center product-name">
+								<a href="#">{{ item.product.product_name }}</a>
+							</td>
+							<td class="text-center product-name">
+								<a href="#">{{ order.order_id }}</a>
+							</td>
+							<td class="text-center product-name">
+								<a href="#">{{ payment_status }}</a>
+							</td>
+						</tr>
+                        {% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<!-- Cart Update -->
+			<div class="row mt-30">
+				<div class="col-6 mb-30">
+					<a class="button-1 border-radious-0" href="product.html">Go To Dashboard</a>
+				</div>
+			</div>
+			<div class="row cart-page-check-out-area flex-row-reverse pt-4 ">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-header bg-transparent py-3">
+                            <h6 class="m-0 mb-1">Order Total</h6>
+                        </div>
+                        <div class="card-body ">
+                            <ul class="list-unstyled">
+                                <li class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="me-2 text-body">Subtotal</h6><span class="text-end">$265.00</span>
+                                </li>
+                            </ul>
+                            <div class="d-grid gap-2 pt-25 mx-auto text-center ">
+                                <a class="button-1 border-radious-0" href="checkout.html">Go To Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</section>
+	<!-- End Add to Cart Area -->
+{% endblock success %}

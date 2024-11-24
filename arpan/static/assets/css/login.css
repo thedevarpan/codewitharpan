@@ -1,0 +1,180 @@
+* {
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  body {
+    background-image: url(./background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* font-family: "Hind", sans-serif; */
+    font-weight: 300;
+    font-style: normal;
+    color: #fff;
+    background-color: #1d1d1d;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Sora', sans-serif;
+  }
+  
+  .page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-image: linear-gradient(80deg, #000000, rgb(0, 0, 0), rgba(0, 0, 0, 0.648), rgba(86, 86, 86, 0.443));
+    justify-content: left;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0px 10%;
+  }
+  .page .login_container {
+    width: 100%;
+    max-width: 400px;
+    height: 90%;
+  }
+  .page .login_container .logo_text {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    box-sizing: border-box;
+    padding: 14px;
+  }
+  .page .login_container .logo_text .logo {
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background-image: url(./logo/favicon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .page .login_container .logo_text img {
+    -o-object-fit: contain;
+       object-fit: contain;
+    width: 70%;
+    height: 10%;
+    -o-object-position: center;
+       object-position: center;
+  }
+  .page .login_container .logo_text .text_container {
+    width: 90%;
+    height: 40%;
+    display: flex;
+    align-items: end;
+    justify-content: flex-start;
+  }
+  .page .login_container .logo_text .text_container .text {
+    width: 90%;
+    height: 50%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+  .page .login_container .logo_text .text_container .text p {
+    padding: 0px;
+    margin: 0px;
+  }
+  .page .login_container .logo_text .text_container .text .lower-text {
+    font-size: smaller;
+  }
+  .page .login_container .login_form {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    box-sizing: border-box;
+    padding: 14px;
+    color: white;
+  }
+  .page .login_container .login_form .input {
+    width: 90%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #1a1a1a;
+    box-sizing: border-box;
+    padding: 0px 10px;
+    border-radius: 6px;
+  }
+  .page .login_container .login_form .input input {
+    width: 90%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: rgb(147, 142, 142);
+  }
+  .page .login_container .login_form .input .icon {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .page .login_container .login_form .input i {
+    color: white;
+  }
+  .page .login_container .login_form .input .none {
+    display: none;
+  }
+  .page .login_container .login_form p {
+    font-size: smaller;
+    cursor: pointer;
+  }
+  .page .login_container .login_button {
+    width: 100%;
+    height: 30%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 14px;
+  }
+  .page .login_container .login_button p {
+    color: white;
+  }
+  .page .login_container .login_button p a {
+    color: rgb(100, 11, 178);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .page .login_container .login_button .buttons {
+    width: 85%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page .login_container .login_button .buttons .button {
+    width: 90%;
+    height: 45%;
+    border-radius: 6px;
+    background-color: rgb(100, 11, 178);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  .page .login_container .login_button .buttons .button:hover {
+    background-color: rgb(78, 4, 142);
+  }
+  
+  @media screen and (max-width: 850px) {
+    .page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }/*# sourceMappingURL=login.css.map */

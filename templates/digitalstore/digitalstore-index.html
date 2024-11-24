@@ -1,0 +1,1048 @@
+{% extends "digitalstore/digitalstore-base.html" %}
+{% block digitalstoreIndex %}
+{% load static %}
+	<!-- Start Hero Area -->
+	<section class="hero-area" style="background-image:url('assets/img/hero-bg.jpg');">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="hero-caption">
+						<h2>Premium Design & Web Resources</h2>
+						<p>1608+ Fresh item added this week</p>
+						<div class="h-search-form">
+							<form action="#">
+								<input type="search" name="search" placeholder="Type Your Keywords . . .">
+								<button><i class="bi bi-search"></i></button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Hero Area -->
+	<!-- Start Feature Trending Products Area -->
+	<section class="feature-trending section-padding section-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-headding mb-50">
+						<h2>Featured Trending <br> Products</h2>
+						<p>From multipurpose themes to niche templates</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="trending-product-slider owl-carousel">
+						<!-- Single -->
+						 {% for product in products  %}
+							<div class="product-item">
+								<!-- thumbnail -->
+								<div class="thumbnail">
+									<a href="digitalproduct-details/{{product.slug}}">
+										<img src="{{product.product_thumbnail.url}}" alt="thumbnail">
+									</a>
+									<div class="badge trending">
+										<span>Trending</span>
+									</div>
+								</div>
+								<!-- content -->
+								<div class="content">
+									<h3><a href="digitalproduct-details/{{product.slug}}">{{product.product_name | truncatechars:45}}</a></h3>
+									<div class="meta">
+										<span>by <a href="#">Arpan</a></span>
+										<span>at<a href=""> {{product.created_at}}</a></span>
+									</div>
+									<div class="ratting">
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><small>(05)</small></span>
+									</div>
+									<div class="bottom">
+										<div class="price">
+											<span>₹{{product.price}}</span>
+										</div>
+										<div class="right-btn">
+											<a class="button-4" target="_blank" href="{{product.live_preview_link}}">Preview</a>
+
+											{% comment %} <a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a> {% endcomment %}
+
+											<a class="button-3" href="{% url 'AddToCart' %}?product_id={{ product.id }}">
+												<i class="fas fa-shopping-cart"></i>
+											</a>
+
+											
+											<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Feature Trending Products Area -->
+	<!-- Start Popular category Area -->
+	<section class="p-p-category section-padding-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-headding mb-50">
+						<h2>Popular Category</h2>
+						<p>From multipurpose themes to niche templates</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!-- Single -->
+				{% for product_category in product_categories %}
+					<div class="col-lg-3 col-md-6 mb-30">
+						<div class="p-category-item">
+							<a href="#">
+								<img src="{{product_category.category_image.url}}" alt="cat">
+							</a>
+							<h3><a href="#">{{product_category.category_name}}</a></h3>
+							<a class="link" href="#">Learn More <i class="bi bi-arrow-right"></i></a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<!-- End Popular category Area -->
+	<!-- Start Latest Product Area -->
+	<section class="latest-product-area section-padding section-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-headding mb-50">
+						<h2>Check Our Newest <br> Themes</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!-- Category -->
+				<div class="l-product-category-list mb-40 text-center">
+					<ul>
+						<li data-filter="all">All Category</li>
+						<li data-filter=".wordpress">WordPress Theme</li>
+						<li data-filter=".html">HTML Theme</li>
+						<li data-filter=".uitemplate">UI Templates</li>
+						<li data-filter=".plugins">Plugins</li>
+						<li data-filter=".ecommerce">eCommerce</li>
+					</ul>
+				</div>
+				<div class="row l-product-recent-theme portF">
+					<!-- Single -->
+					<div class="col-lg-4 col-md-6 mb-30 mix wordpress plugins">
+						<div class="product-item">
+							<!-- thumbnail -->
+							<div class="thumbnail">
+								<a href="product-details.html">
+									<img src="{% static 'digitalstore/assets/img/product/9.jpg' %}" alt="thumbnial">
+								</a>
+								<div class="badge new">
+									<span>New</span>
+								</div>
+							</div>
+							<!-- content -->
+							<div class="content">
+								<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+								<div class="meta">
+									<span>by <a href="#">PreeTheme</a></span>
+									<span>in <a href="#">Business</a></span>
+								</div>
+								<div class="ratting">
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><small>(05)</small></span>
+								</div>
+								<div class="bottom">
+									<div class="price">
+										<span>$39</span>
+									</div>
+									<div class="right-btn">
+										<a class="button-4" href="#">Preview</a>
+										<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+										<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="col-lg-4 col-md-6 mb-30 mix plugins">
+						<div class="product-item uitemplate html">
+							<!-- thumbnail -->
+							<div class="thumbnail">
+								<a href="product-details.html">
+									<img src="{% static 'digitalstore/assets/img/product/8.jpg' %}" alt="thumbnial">
+								</a>
+								<div class="badge new">
+									<span>New</span>
+								</div>
+							</div>
+							<!-- content -->
+							<div class="content">
+								<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+								<div class="meta">
+									<span>by <a href="#">PreeTheme</a></span>
+									<span>in <a href="#">Business</a></span>
+								</div>
+								<div class="ratting">
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><small>(0)</small></span>
+								</div>
+								<div class="bottom">
+									<div class="price">
+										<span>$59</span>
+									</div>
+									<div class="right-btn">
+										<a class="button-4" href="#">Preview</a>
+										<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+										<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="col-lg-4 col-md-6 mb-30 mix wordpress html">
+						<div class="product-item">
+							<!-- thumbnail -->
+							<div class="thumbnail">
+								<a href="product-details.html">
+									<img src="{% static 'digitalstore/assets/img/product/7.jpg' %}" alt="thumbnial">
+								</a>
+								<div class="badge new">
+									<span>New</span>
+								</div>
+							</div>
+							<!-- content -->
+							<div class="content">
+								<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+								<div class="meta">
+									<span>by <a href="#">PreeTheme</a></span>
+									<span>in <a href="#">Business</a></span>
+								</div>
+								<div class="ratting">
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><small>(01)</small></span>
+								</div>
+								<div class="bottom">
+									<div class="price">
+										<span>$39</span>
+									</div>
+									<div class="right-btn">
+										<a class="button-4" href="#">Preview</a>
+										<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+										<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="col-lg-4 col-md-6 mb-30 mix uitemplate">
+						<div class="product-item">
+							<!-- thumbnail -->
+							<div class="thumbnail">
+								<a href="product-details.html">
+									<img src="{% static 'digitalstore/assets/img/product/6.jpg' %}" alt="thumbnial">
+								</a>
+								<div class="badge new">
+									<span>New</span>
+								</div>
+							</div>
+							<!-- content -->
+							<div class="content">
+								<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+								<div class="meta">
+									<span>by <a href="#">PreeTheme</a></span>
+									<span>in <a href="#">Business</a></span>
+								</div>
+								<div class="ratting">
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><small>(05)</small></span>
+								</div>
+								<div class="bottom">
+									<div class="price">
+										<span>$39</span>
+									</div>
+									<div class="right-btn">
+										<a class="button-4" href="#">Preview</a>
+										<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+										<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="col-lg-4 col-md-6 mb-30 mix wordpress">
+						<div class="product-item">
+							<!-- thumbnail -->
+							<div class="thumbnail">
+								<a href="product-details.html">
+									<img src="{% static 'digitalstore/assets/img/product/5.jpg' %}" alt="thumbnial">
+								</a>
+								<div class="badge new">
+									<span>New</span>
+								</div>
+							</div>
+							<!-- content -->
+							<div class="content">
+								<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+								<div class="meta">
+									<span>by <a href="#">PreeTheme</a></span>
+									<span>in <a href="#">Business</a></span>
+								</div>
+								<div class="ratting">
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><small>(05)</small></span>
+								</div>
+								<div class="bottom">
+									<div class="price">
+										<span>$39</span>
+									</div>
+									<div class="right-btn">
+										<a class="button-4" href="#">Preview</a>
+										<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+										<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="col-lg-4 col-md-6 mb-30 mix plugins">
+						<div class="product-item">
+							<!-- thumbnail -->
+							<div class="thumbnail">
+								<a href="product-details.html">
+									<img src="{% static 'digitalstore/assets/img/product/4.jpg' %}" alt="thumbnial">
+								</a>
+								<div class="badge new">
+									<span>New</span>
+								</div>
+							</div>
+							<!-- content -->
+							<div class="content">
+								<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+								<div class="meta">
+									<span>by <a href="#">PreeTheme</a></span>
+									<span>in <a href="#">Business</a></span>
+								</div>
+								<div class="ratting">
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><small>(05)</small></span>
+								</div>
+								<div class="bottom">
+									<div class="price">
+										<span>$39</span>
+									</div>
+									<div class="right-btn">
+										<a class="button-4" href="#">Preview</a>
+										<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+										<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="col-lg-4 col-md-6 mb-30 mix wordpress plugins">
+						<div class="product-item">
+							<!-- thumbnail -->
+							<div class="thumbnail">
+								<a href="product-details.html">
+									<img src="{% static 'digitalstore/assets/img/product/3.jpg' %}" alt="thumbnial">
+								</a>
+								<div class="badge new">
+									<span>New</span>
+								</div>
+							</div>
+							<!-- content -->
+							<div class="content">
+								<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+								<div class="meta">
+									<span>by <a href="#">PreeTheme</a></span>
+									<span>in <a href="#">Business</a></span>
+								</div>
+								<div class="ratting">
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><small>(05)</small></span>
+								</div>
+								<div class="bottom">
+									<div class="price">
+										<span>$39</span>
+									</div>
+									<div class="right-btn">
+										<a class="button-4" href="#">Preview</a>
+										<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+										<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="col-lg-4 col-md-6 mb-30 mix ecommerce">
+						<div class="product-item">
+							<!-- thumbnail -->
+							<div class="thumbnail">
+								<a href="product-details.html">
+									<img src="{% static 'digitalstore/assets/img/product/2.jpg' %}" alt="thumbnial">
+								</a>
+								<div class="badge new">
+									<span>New</span>
+								</div>
+							</div>
+							<!-- content -->
+							<div class="content">
+								<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+								<div class="meta">
+									<span>by <a href="#">PreeTheme</a></span>
+									<span>in <a href="#">Business</a></span>
+								</div>
+								<div class="ratting">
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><small>(05)</small></span>
+								</div>
+								<div class="bottom">
+									<div class="price">
+										<span>$39</span>
+									</div>
+									<div class="right-btn">
+										<a class="button-4" href="#">Preview</a>
+										<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+										<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="col-lg-4 col-md-6 mb-30 mix wordpress html">
+						<div class="product-item">
+							<!-- thumbnail -->
+							<div class="thumbnail">
+								<a href="product-details.html">
+									<img src="{% static 'digitalstore/assets/img/product/1.jpg' %}" alt="thumbnial">
+								</a>
+								<div class="badge new">
+									<span>New</span>
+								</div>
+							</div>
+							<!-- content -->
+							<div class="content">
+								<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+								<div class="meta">
+									<span>by <a href="#">PreeTheme</a></span>
+									<span>in <a href="#">Business</a></span>
+								</div>
+								<div class="ratting">
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><i class="fas fa-star"></i></span>
+									<span><small>(05)</small></span>
+								</div>
+								<div class="bottom">
+									<div class="price">
+										<span>$39</span>
+									</div>
+									<div class="right-btn">
+										<a class="button-4" href="#">Preview</a>
+										<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+										<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 mt-30 text-center">
+					<a class="button-1" href="product.html">View All Product</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Latest Product Area -->
+	<!-- Start Best Seller of the month -->
+	<div class="b-sller-auth-month section-padding-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-headding mb-50">
+						<h2>Seller of the month</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="auth-port-best-sale">
+						<div class="row">
+							<div class="col-3 align-self-center">
+								<div class="img">
+									<img src="{% static 'digitalstore/assets/img/logos.png' %}" alt="logo">
+								</div>
+							</div>
+							<div class="col-9">
+								<div class="content">
+									<h3>CodexUnic Theme</h3>
+									<p> Member Since March 2021 </p>
+									<a class="button-1" href="product.html">View All Product</a>
+								</div>
+							</div>
+						</div>
+						<p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mollis quis nulla et mollis. Pellentesque consectetur facilisis sapien. Sed eget quam in risus placerat convallis. In sodales ante id quam vestibulum bibendum. </p>
+						<ul>
+							<li><i class="far fa-check-square"></i> Fully Responsive Design</li>
+							<li><i class="far fa-check-square"></i>  Modern and clean design </li>
+							<li><i class="far fa-check-square"></i> Awesome Design</li>
+							<li><i class="far fa-check-square"></i> WC3 Valiadation Code</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="product-item">
+						<!-- thumbnail -->
+						<div class="thumbnail">
+							<a href="product-details.html">
+								<img src="{% static 'digitalstore/assets/img/product/3.jpg' %}" alt="thumbnial">
+							</a>
+							<div class="badge trending">
+								<span>Sale</span>
+							</div>
+						</div>
+						<!-- content -->
+						<div class="content">
+							<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+							<div class="meta">
+								<span>by <a href="#">PreeTheme</a></span>
+								<span>in <a href="#">Business</a></span>
+							</div>
+							<div class="ratting">
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><small>(261)</small></span>
+							</div>
+							<div class="bottom">
+								<div class="price">
+									<span>$59</span>
+								</div>
+								<div class="right-btn">
+									<a class="button-4" href="#">Preview</a>
+									<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+									<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="product-item">
+						<!-- thumbnail -->
+						<div class="thumbnail">
+							<a href="product-details.html">
+								<img src="{% static 'digitalstore/assets/img/product/4.jpg' %}" alt="thumbnial">
+							</a>
+							<div class="badge trending">
+								<span>Sale</span>
+							</div>
+						</div>
+						<!-- content -->
+						<div class="content">
+							<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+							<div class="meta">
+								<span>by <a href="#">PreeTheme</a></span>
+								<span>in <a href="#">Business</a></span>
+							</div>
+							<div class="ratting">
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><small>(25)</small></span>
+							</div>
+							<div class="bottom">
+								<div class="price">
+									<span>$39</span>
+								</div>
+								<div class="right-btn">
+									<a class="button-4" href="#">Preview</a>
+									<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+									<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Best Seller of the month -->
+	<!-- Start Best Selling Product Area -->
+	<section class="best-selling-product section-bg section-padding-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-headding mb-50">
+						<h2>Best Selling Product <br> Last Weeks</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="product-item">
+						<!-- thumbnail -->
+						<div class="thumbnail">
+							<a href="product-details.html">
+								<img src="{% static 'assets/img/product/7.jpg' %}" alt="thumbnial">
+							</a>
+							<div class="badge trending">
+								<span>Sale</span>
+							</div>
+						</div>
+						<!-- content -->
+						<div class="content">
+							<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+							<div class="meta">
+								<span>by <a href="#">PreeTheme</a></span>
+								<span>in <a href="#">Business</a></span>
+							</div>
+							<div class="ratting">
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><small>(250)</small></span>
+							</div>
+							<div class="bottom">
+								<div class="price">
+									<span>$29</span>
+								</div>
+								<div class="right-btn">
+									<a class="button-4" href="#">Preview</a>
+									<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+									<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="product-item">
+						<!-- thumbnail -->
+						<div class="thumbnail">
+							<a href="product-details.html">
+								<img src="{% static 'assets/img/product/8.jpg' %}" alt="thumbnial">
+							</a>
+							<div class="badge trending">
+								<span>Sale</span>
+							</div>
+						</div>
+						<!-- content -->
+						<div class="content">
+							<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+							<div class="meta">
+								<span>by <a href="#">PreeTheme</a></span>
+								<span>in <a href="#">Business</a></span>
+							</div>
+							<div class="ratting">
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><small>(25)</small></span>
+							</div>
+							<div class="bottom">
+								<div class="price">
+									<span>$39</span>
+								</div>
+								<div class="right-btn">
+									<a class="button-4" href="#">Preview</a>
+									<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+									<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="product-item">
+						<!-- thumbnail -->
+						<div class="thumbnail">
+							<a href="product-details.html">
+								<img src="{% static 'assets/img/product/9.jpg' %}" alt="thumbnial">
+							</a>
+							<div class="badge trending">
+								<span>Sale</span>
+							</div>
+						</div>
+						<!-- content -->
+						<div class="content">
+							<h3><a href="product-details.html">JobVivo - Job Board HTML Template...</a></h3>
+							<div class="meta">
+								<span>by <a href="#">PreeTheme</a></span>
+								<span>in <a href="#">Business</a></span>
+							</div>
+							<div class="ratting">
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><i class="fas fa-star"></i></span>
+								<span><small>(125)</small></span>
+							</div>
+							<div class="bottom">
+								<div class="price">
+									<span>$39</span>
+								</div>
+								<div class="right-btn">
+									<a class="button-4" href="#">Preview</a>
+									<a class="button-3" href="#"><i class="fas fa-shopping-cart"></i></a>
+									<a class="button-5" href="#"><i class="fas fa-heart"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Best Selling Product Area -->
+	<!-- Start Why Chooses Us Area -->
+	<section class="why-chooses-us section-padding-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-headding mb-50">
+						<h2>Why our marketplace?</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!-- Single -->
+				<div class="col-lg-3 col-md-6 mb-30">
+					<div class="info-item-1">
+						<div class="icon">
+							<i class="fas fa-check"></i>
+						</div>
+						<div class="content">
+							<h4>Quality Guarantee</h4>
+							<p>Quality checked by our team</p>
+						</div>
+					</div>
+				</div>
+				<!-- Single -->
+				<div class="col-lg-3 col-md-6 mb-30">
+					<div class="info-item-1">
+						<div class="icon">
+							<i class="fas fa-headset"></i>
+						</div>
+						<div class="content">
+							<h4>Customer Support</h4>
+							<p>Friendly 24/7 customer support</p>
+						</div>
+					</div>
+				</div>
+				<!-- Single -->
+				<div class="col-lg-3 col-md-6 mb-30">
+					<div class="info-item-1">
+						<div class="icon">
+							<i class="fas fa-sync"></i>
+						</div>
+						<div class="content">
+							<h4>Lifetime Free Updates</h4>
+							<p>Never pay for an update</p>
+						</div>
+					</div>
+				</div>
+				<!-- Single -->
+				<div class="col-lg-3 col-md-6 mb-30">
+					<div class="info-item-1">
+						<div class="icon">
+							<i class="fas fa-user-lock"></i>
+						</div>
+						<div class="content">
+							<h4>Secure Payments</h4>
+							<p>we posess SSL / Secure</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Why Chooses Us Area -->
+	<!-- Start Testimonial Area -->
+	<section class="testimonial-area section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-headding mb-50">
+						<h2>What they are talking About Us</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="testimonial-full owl-carousel">
+						<!-- single -->
+						<div class="testimonial-item">
+							<div class="top">
+								<div class="img">
+									<img src="{% static 'digitalstore/assets/img/1.png' %}" alt="img">
+								</div>
+								<div class="meta">
+									<h3>Al-Mahmud</h3>
+									<div class="ratting-testi">
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+									</div>
+								</div>
+								<div class="quote">
+									<img src="{% static 'digitalstore/assets/img/qoute.png' %}" alt="img">
+								</div>
+							</div>
+							<div class="bottom">
+								<p>Nam ullamcorper eros sed semper viverra. Suspendisse porttitor auctor felis pulvinar elementum. Cras nec feugiat felis. Maecenas ut justo eu nisl pharetra lobortis vel non erat. </p>
+							</div>
+						</div>
+						<!-- single -->
+						<div class="testimonial-item">
+							<div class="top">
+								<div class="img">
+									<img src="{% static 'digitalstore/assets/img/1.png' %}" alt="img">
+								</div>
+								<div class="meta">
+									<h3>Al-Mahmud</h3>
+									<div class="ratting-testi">
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+									</div>
+								</div>
+								<div class="quote">
+									<img src="{% static 'digitalstore/assets/img/qoute.png' %}" alt="img">
+								</div>
+							</div>
+							<div class="bottom">
+								<p>Nam ullamcorper eros sed semper viverra. Suspendisse porttitor auctor felis pulvinar elementum. Cras nec feugiat felis. Maecenas ut justo eu nisl pharetra lobortis vel non erat. </p>
+							</div>
+						</div>
+						<!-- single -->
+						<div class="testimonial-item">
+							<div class="top">
+								<div class="img">
+									<img src="{% static 'digitalstore/assets/img/1.png' %}" alt="img">
+								</div>
+								<div class="meta">
+									<h3>Al-Mahmud</h3>
+									<div class="ratting-testi">
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+										<span><i class="fas fa-star"></i></span>
+									</div>
+								</div>
+								<div class="quote">
+									<img src="{% static 'digitalstore/assets/img/qoute.png' %}" alt="img">
+								</div>
+							</div>
+							<div class="bottom">
+								<p>Nam ullamcorper eros sed semper viverra. Suspendisse porttitor auctor felis pulvinar elementum. Cras nec feugiat felis. Maecenas ut justo eu nisl pharetra lobortis vel non erat. </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Testimonial Area -->
+	<!-- Start Latest News & Blog -->
+	<section class="latest-news section-padding-2 section-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="section-headding mb-50">
+						<h2>Our Latest News & Blog</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!-- Single -->
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="blog-item">
+						<div class="thumbnail">
+							<a href="single.html">
+								<img src="{% static 'digitalstore/assets/img/blog/1.jpg' %}" alt="blog">
+							</a>
+						</div>
+						<div class="content">
+							<div class="c-o-cate">
+                        		<span><i class="fas fa-tags"></i> <a href="#">Technology</a></span>
+                        		<span><i class="far fa-comments"></i> 03 Comments</span>
+                        	</div>
+                            <div class="title-or-con">
+                            	<h2><a href="single.html">he National Minimum wage is an important part</a></h2>
+                            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis elit et turpis auctor dignissim.. </p>
+                            </div>
+                            <div class="meta">
+                            	<div class="left">
+                            		<a href="#">
+                            			<img src="{% static 'digitalstore/assets/img/1.png' %}" alt="logo">
+                            			<span>Mithali</span>
+                            		</a>
+                            	</div>
+                            	<div class="right">
+                            		<a class="button-1" href="single.html">Read More</a>
+                            	</div>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<!-- Single -->
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="blog-item">
+						<div class="thumbnail">
+							<a href="single.html">
+								<img src="{% static 'digitalstore/assets/img/blog/2.jpg' %}" alt="blog">
+							</a>
+						</div>
+						<div class="content">
+							<div class="c-o-cate">
+                        		<span><i class="fas fa-tags"></i> <a href="#">Technology</a></span>
+                        		<span><i class="far fa-comments"></i> 03 Comments</span>
+                        	</div>
+                            <div class="title-or-con">
+                            	<h2><a href="single.html">he National Minimum wage is an important part</a></h2>
+                            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis elit et turpis auctor dignissim.. </p>
+                            </div>
+                            <div class="meta">
+                            	<div class="left">
+                            		<a href="#">
+                            			<img src="assets/img/1.png" alt="logo">
+                            			<span>Mithali</span>
+                            		</a>
+                            	</div>
+                            	<div class="right">
+                            		<a class="button-1" href="single.html">Read More</a>
+                            	</div>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<!-- Single -->
+				<div class="col-lg-4 col-md-6 mb-30">
+					<div class="blog-item">
+						<div class="thumbnail">
+							<a href="single.html">
+								<img src="{% static 'digitalstore/assets/img/blog/3.jpg' %}" alt="blog">
+							</a>
+						</div>
+						<div class="content">
+							<div class="c-o-cate">
+                        		<span><i class="fas fa-tags"></i> <a href="#">Technology</a></span>
+                        		<span><i class="far fa-comments"></i> 03 Comments</span>
+                        	</div>
+                            <div class="title-or-con">
+                            	<h2><a href="single.html">he National Minimum wage is an important part</a></h2>
+                            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis elit et turpis auctor dignissim.. </p>
+                            </div>
+                            <div class="meta">
+                            	<div class="left">
+                            		<a href="#">
+                            			<img src="assets/img/1.png" alt="logo">
+                            			<span>Mithali</span>
+                            		</a>
+                            	</div>
+                            	<div class="right">
+                            		<a class="button-1" href="single.html">Read More</a>
+                            	</div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Latest News & Blog -->
+	<!-- Start Subscribe Area -->
+	<section class="subscribe-area pt-100 pb-100" style="background-image: url('assets/img/sub.png');">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="subscribe-form">
+						<h3>Subscribe Now!</h3>
+						<p>Simple pricing plans. Unlimited web maintenance service</p>
+						<form action="#">
+							<input type="email" name="email" placeholder="Enter Your Email..">
+							<button type="submit"><i class="fas fa-arrow-right"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Subscribe Area -->
+	{% endblock digitalstoreIndex %}

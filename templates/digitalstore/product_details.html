@@ -1,0 +1,454 @@
+{% extends "digitalstore/digitalstore-base.html" %}
+{% block productDetails %}
+{% load static %}
+	<!-- Start Inner Banner Wrapper -->
+	<section class="inner-banner-wrapper pt-80 pb-80 text-center" style="background-image:url('{{product.product_thumbnail.url}}');">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<div class="inner-banner-wrapper-content">
+						<h4>Premium WordPress Themes, Web Templates and Many More ...</h4>
+						<form action="#">
+							<input type="search" name="search" placeholder="Search Your KeyWords....">
+							<button type="submit"><i class="bi bi-search"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Inner Banner Wrapper -->
+	<!-- Start Breadcrumb Area -->
+	<div class="breadcrumb-area pt-30 pb-30 section-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="breadcrumb-content">
+						<ul>
+							<li><a href="index-2.html">Home</a></li>
+							<li><a href="product.html">Product</a></li>
+							<li><a href="product.html">Design</a></li>
+							<li>Product Details</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumb Area -->
+	<!-- Start Product Area -->
+	<section class="product-page section-padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 mb-40">
+					<!-- Product Details -->
+					<div class="product-details-full">
+						<div class="thumbnail">
+							<img src="{{product.product_thumbnail.url}}" alt="img">
+						</div>
+						<div class="row mt-30">
+							<div class="col-md-6 mb-30">
+								<div class="lp-or-vedio-btn">
+									<a class="button-1" target="_blank" href="{{product.live_preview_link}}"><i class="fas fa-eye"></i> Live Preview</a>
+									<a class="button-2 video-btn-a" target="_blank" href="{{product.product_video}}"><i class="fas fa-video"></i> Video</a>
+								</div>
+							</div>
+							<div class="col-md-6 text-right mb-30 align-self-center">
+								<div class="product-share">
+									<span><b>Share :</b></span>
+									<span><a href="#"><i class="fab fa-facebook-f"></i></a></span>
+									<span><a href="#"><i class="fab fa-twitter"></i></a></span>
+									<span><a href="#"><i class="fab fa-instagram"></i></a></span>
+									<span><a href="#"><i class="fab fa-linkedin"></i></a></span>
+								</div>
+							</div>
+						</div>
+						<div class="product-details-box-t mt-30">
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+  								<li class="nav-item" role="presentation">
+    								<span class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" role="tab" aria-controls="description" aria-selected="true">Description</span>
+  								</li>
+  								<li class="nav-item" role="presentation">
+    								<span class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Review(03)</span>
+  								</li>
+  								<li class="nav-item" role="presentation">
+    								<span class="nav-link" id="support-tab" data-bs-toggle="tab" data-bs-target="#support" role="tab" aria-controls="support" aria-selected="false">Support Tickets</span>
+  								</li>
+							</ul>
+							<div class="tab-content" id="myTabContent">
+							  	<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+							  		<div class="product-details-description">
+							  			<h2>{{product.product_name}}</h2>
+							  			<p>{{product.product_long_description}}</p>
+							  			
+							  		</div>
+							  	</div>
+							  	<div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+							  		<div class="single-product-reviews">
+							  			<h2>2 Review For DMARK Theme</h2>
+							  			<ul>
+							  				<!-- Single -->
+							  				<li class="review-single">
+							  					<img src="assets/img/avatar.jpg" alt="avatar">
+							  					<div class="review-info">
+								  					<h5>Alea Brooks</h5>
+								  					<small> September 01, 2021 </small>
+								  				</div>
+							  					<div class="ratting-single">
+													<span><i class="fas fa-star"></i></span>
+													<span><i class="fas fa-star"></i></span>
+													<span><i class="fas fa-star"></i></span>
+													<span><i class="fas fa-star"></i></span>
+													<span><i class="fas fa-star"></i></span>
+												</div>
+												<div class="revie-con">
+													<p>Lorem Ipsumin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate</p>
+												</div>
+							  				</li>
+							  				<!-- Single -->
+							  				<li class="review-single">
+							  					<img src="assets/img/avatar1.jpg" alt="avatar">
+							  					<div class="review-info">
+								  					<h5>Alea Brooks</h5>
+								  					<small> Jun 01, 2021 </small>
+								  				</div>
+							  					<div class="ratting-single">
+													<span><i class="fas fa-star"></i></span>
+													<span><i class="fas fa-star"></i></span>
+													<span><i class="fas fa-star"></i></span>
+													<span><i class="fas fa-star"></i></span>
+													<span><i class="fas fa-star"></i></span>
+												</div>
+												<div class="revie-con">
+													<p>Lorem Ipsumin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate</p>
+												</div>
+							  				</li>
+							  			</ul>
+							  			<div class="product-review-form">
+								  			<h3>Add a review</h3>
+								  			<div class="ratting-single mb-20">
+												<span><i class="fas fa-star"></i></span>
+												<span><i class="fas fa-star"></i></span>
+												<span><i class="fas fa-star"></i></span>
+												<span><i class="fas fa-star"></i></span>
+												<span><i class="fas fa-star"></i></span>
+											</div>
+											<form action="#">
+												<textarea name="review-message" placeholder="Your Review"></textarea>
+												<input type="text" name="name" placeholder="Your Name">
+												<input type="email" name="email" placeholder="Your Email">
+												<button class="button-2" type="submit">Submit Review</button>
+											</form>
+								  		</div>
+							  		</div>
+							  	</div>
+							  	<div class="tab-pane fade" id="support" role="tabpanel" aria-labelledby="support-tab">
+							  		<div class="p-support-ticket-request-form">
+							  			<h2>Please Create a One Support Ticket</h2>
+							  			<p>Nulla sit amet felis lacinia, consequat lacus porta, auctor lorem. Integer tincidunt viverra volutpat. Fusce elit mi, suscipit eget lobortis non, mattis a turpis.</p>
+							  			<form action="#">
+							  				<div class="row">
+							  					<div class="col-md-6">
+							  						<input type="text" name="name" placeholder="Your Name">
+							  					</div>
+							  					<div class="col-md-6">
+							  						<input type="email" name="email" placeholder="Your Email">
+							  					</div>
+							  					<div class="col-lg-12">
+							  						<textarea name="message" placeholder="Write a Comments"></textarea>
+							  					</div>
+							  					<div class="col-lg-12">
+							  						<button type="submit" class="button-2">Send Request</button>
+							  					</div>
+							  				</div>
+							  			</form>
+							  		</div>
+							  	</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<!-- Single -->
+					<div class="single-p-widgets-single mb-40">
+						<div class="licence-p-a">
+							<ul class="nav nav-tabs" id="myLicenceTab" role="tablist">
+  								<li class="nav-item" role="presentation">
+    								<button class="nav-link active" id="regularli-tab" data-bs-toggle="tab" data-bs-target="#regularli" type="button" role="tab" aria-controls="regularli" aria-selected="true">Regular License</button>
+  								</li>
+  								<li class="nav-item" role="presentation">
+    								<button class="nav-link" id="extends-tab" data-bs-toggle="tab" data-bs-target="#extends" type="button" role="tab" aria-controls="extends" aria-selected="false">Extended Licence</button>
+  								</li>
+							</ul>
+							<div class="tab-content" id="myLicenceTabContent">
+							  	<div class="tab-pane fade show active" id="regularli" role="tabpanel" aria-labelledby="regularli-tab">
+							  		<div class="single-p-widgets-sin-price">
+							  			<p>1 Year update & support from next year 50& discount </p>
+							  			<div class="theme-price-plan">
+											<div class="theme-price-single">
+												<div class="theme-price-radio">
+													<input class="form-check-input" type="radio" name="radio--" id="radio--1">
+													<label class="form-check-label" for="radio--1">
+														Single Site License
+													</label>
+												</div>
+												<span class="theme-price-value">$70</span>
+											</div>
+											<div class="theme-price-single">
+												<div class="theme-price-radio">
+													<input class="form-check-input" type="radio" name="radio--" id="radio--2" checked="">
+													<label class="form-check-label" for="radio--2">
+														5 Sites License
+													</label>
+												</div>
+												<span class="theme-price-value">$89</span>
+											</div>
+											<div class="theme-price-single">
+												<div class="theme-price-radio">
+													<input class="form-check-input" type="radio" name="radio--" id="radio--3">
+													<label class="form-check-label" for="radio--3">
+														Unlimited Sites License
+													</label>
+												</div>
+												<span class="theme-price-value">$170</span>
+											</div>
+										</div>
+										<a class="button-1 text-center" href="{% url 'AddToCart' %}?product_id={{ product.id }}"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+							  		</div>
+							  	</div>
+							  	<div class="tab-pane fade" id="extends" role="tabpanel" aria-labelledby="extends-tab">
+							  		<div class="single-p-widgets-sin-price">
+							  			<p>1 Year update & support from next year 50& discount </p>
+							  			<div class="theme-price-plan">
+											<div class="theme-price-single">
+												<div class="theme-price-radio">
+													<input class="form-check-input" type="radio" name="radio--" id="radio--4">
+													<label class="form-check-label" for="radio--4">
+														Single Site License
+													</label>
+												</div>
+												<span class="theme-price-value">$70</span>
+											</div>
+											<div class="theme-price-single">
+												<div class="theme-price-radio">
+													<input class="form-check-input" type="radio" name="radio--" id="radio--5" checked="">
+													<label class="form-check-label" for="radio--5">
+														5 Sites License
+													</label>
+												</div>
+												<span class="theme-price-value">$89</span>
+											</div>
+											<div class="theme-price-single">
+												<div class="theme-price-radio">
+													<input class="form-check-input" type="radio" name="radio--" id="radio--6">
+													<label class="form-check-label" for="radio--6">
+														Unlimited Sites License
+													</label>
+												</div>
+												<span class="theme-price-value">$170</span>
+											</div>
+										</div>
+										<a class="button-1 text-center" href="#"><i class="fas fa-shopping-cart"></i> Add To Cart</a>
+							  		</div>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="single-p-widgets-single box-shadow mb-40">
+						<div class="s-or-review-item">
+							<i class="fas fa-shopping-cart"></i>
+							<span>2085 sales</span>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="single-p-widgets-single box-shadow mb-40">
+						<div class="auth-port-best-sale">
+							<div class="row">
+								<div class="col-3 align-self-center">
+									<div class="img">
+										<img src="assets/img/logos.png" alt="logo">
+									</div>
+								</div>
+								<div class="col-9">
+									<div class="content">
+										<h3>CodexUnic Theme</h3>
+										<p> Member Since March 2021 </p>
+										<a class="button-1" href="profile.html">View All Product</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Single -->
+					<div class="single-p-widgets-single box-shadow mb-40">
+						<h2>Product Information</h2>
+						<div class="dp_detail_infobox_p">
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b>Created :</b>
+								</div>
+								<div class="info">
+									<span> {{product.created_at}} </span>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b> Last update :</b>
+								</div>
+								<div class="info">
+									<span> {{product.updated_at}} </span>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b>Version :</b>
+								</div>
+								<div class="info">
+									<span> 1.0.36 </span>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b> High Resolution:</b>
+								</div>
+								<div class="info">
+									<span> Yes </span>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b> Widget Ready:</b>
+								</div>
+								<div class="info">
+									<span> Yes </span>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b> Support :</b>
+								</div>
+								<div class="info">
+									<span> 24 / 7 </span>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b> Documented :</b>
+								</div>
+								<div class="info">
+									<span>Themes & Plugins  </span>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b> Compatible Browsers :</b>
+								</div>
+								<div class="info">
+									<a href="#"> Chrome, </a>
+									<a href="#"> Edge, </a>
+									<a href="#"> Firefox, </a>
+									<a href="#"> IE10, </a>
+									<a href="#"> IE11, </a>
+									<a href="#"> Opera, </a>
+									<a href="#"> Safari </a>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b>Software Version:</b>
+								</div>
+								<div class="info">
+									<a href="#"> WordPress 4.5, </a>
+									<a href="#"> WordPress 4.5.1, </a>
+									<a href="#"> WordPress 4.5.5, </a>
+									<a href="#"> WordPress 4.6.1, </a>
+									<a href="#"> WordPress 4.6.2, </a>
+									<a href="#"> WordPress 4.6.5, </a>
+									<a href="#"> WordPress 4.7.1 </a>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b>Compatible With:</b>
+								</div>
+								<div class="info">
+									<a href="#"> Bootstrap4-5,</a>
+									<a href="#"> Elementor,</a>
+									<a href="#"> Woocommerce, </a>
+									<a href="#"> SEO Yeost </a>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b> Files Included:</b>
+								</div>
+								<div class="info">
+									<a href="#"> PHP Files,</a>
+									<a href="#"> CSS Files, </a>
+									<a href="#"> Js Files, </a>
+									<a href="#"> HTML Files,</a>
+									<a href="#">Sass Files </a>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b>Layout:</b>
+								</div>
+								<div class="info">
+									<span>Yes</span>
+								</div>
+							</div>
+							<!-- single -->
+							<div class="dp_single_list_p">
+								<div class="title">
+									<b> Tags: </b>
+								</div>
+								<div class="info">
+									<a href="#">Responsive Design,</a>
+									<a href="#">Booststrap5,</a>
+									<a href="#">eCommerce,</a>
+									<a href="#">Job,</a>
+									<a href="#">Multivendor,</a>
+									<a href="#">Employer</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Product Area -->
+	<!-- Start Subscribe Area -->
+	<section class="subscribe-area pt-100 pb-100" style="background-image: url('assets/img/sub.png');">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="subscribe-form">
+						<h3>Subscribe Now!</h3>
+						<p>Simple pricing plans. Unlimited web maintenance service</p>
+						<form action="#">
+							<input type="email" name="email" placeholder="Enter Your Email..">
+							<button type="submit"><i class="fas fa-arrow-right"></i></button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Subscribe Area -->
+{% endblock productDetails %}
+

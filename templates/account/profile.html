@@ -1,0 +1,15 @@
+{% include "components/navbar.html" %}
+{% load static %}
+
+
+
+<h1>This is user profile</h1>
+
+<h4>Username: {{user_data.username}}</h4>
+
+<h4>Email: {{ user_data.email }}</h4>
+<h4>Date Joined: {{ user_data.date_joined }}</h4>
+
+{% include "components/footer.html" %}
+
+    <!-- ==================== End Footer ==================== -->

@@ -1,0 +1,53 @@
+{% extends "core.html" %}
+{% load static %}
+
+
+{% block account %}
+<div class="page">
+    <div class="login_container">
+      <div class="logo_text">
+        <div class="logo"></div>
+        <img src="./logo/arpan-logo.png" alt="" />
+        <div class="text_container">
+          <div class="text">
+            <p>Sign in <b>with email</b></p>
+            <p class="lower-text">Enter your Credentials</p>
+          </div>
+        </div>
+      </div>
+      <div class="login_form">
+        <div class="input">
+          <input type="text" placeholder="Username" />
+        </div>
+        <div class="input">
+          <input
+            type="password"
+            name=""
+            id="password"
+            placeholder="Password"
+          />
+          <div class="icon">
+            <i class="bi bi-eye-slash"></i>
+            <i class="bi bi-eye"></i>
+          </div>
+        </div>
+        <p>forgot password?</p>
+      </div>
+      <div class="login_button">
+        <p>Don't have an account? <a> Sign up</a></p>
+        <div class="buttons">
+          <div class="button">
+            <p>Sign in</p>
+          </div>
+          <div class="button">
+            <p><i class="bi bi-google"></i> Sign in with google</p>
+          </div>
+        </div>
+
+        <p class="footer_text">Not Now!</p>
+      </div>
+    </div>
+  </div>
+{% endblock account %}
+
+    <!-- ==================== End Footer ==================== -->

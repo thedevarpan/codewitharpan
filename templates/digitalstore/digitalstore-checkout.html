@@ -1,0 +1,194 @@
+{% extends "digitalstore/digitalstore-base.html" %}
+{% block digitalcheckout %}
+{% load static %}
+<!-- Start Inner Banner Wrapper -->
+<section class="inner-banner-wrapper pt-80 pb-80 text-center" style="background-image:url('assets/img/bg.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div class="inner-banner-wrapper-content">
+                    <h4>Premium WordPress Themes, Web Templates and Many More ...</h4>
+                    <form action="#">
+                        <input type="search" name="search" placeholder="Search Your KeyWords....">
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Inner Banner Wrapper -->
+<!-- Start Breadcrumb Area -->
+<div class="breadcrumb-area pt-30 pb-30 section-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb-content">
+                    <ul>
+                        <li><a href="index-2.html">Home</a></li>
+                        <li>CheckOut</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumb Area -->
+<!-- Start Checkout Page Content -->
+<section class="checkout-page-content section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="checkout-p-co-form">
+                    <h2>Billing Imformation </h2>
+                    <form method="post" action="{% url 'Checkout' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="ck-single-i">
+                                    <label for="fname">First Name*</label>
+                                    <input type="text" name="first_name" id="fname" placeholder="First Name*">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="ck-single-i">
+                                    <label for="lname">Last Name*</label>
+                                    <input type="text" name="last_name" id="lname" placeholder="Last Name*">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="ck-single-i">
+                                    <label for="cname">Company name (optional)</label>
+                                    <input type="text" name="company_name" id="cname" placeholder="Company name">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="ck-single-i">
+                                    <label for="country">Country / Region *</label>
+                                    <input type="text" name="country" id="country" placeholder="Country / Region *">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="ck-single-i">
+                                    <label for="streeta">Street address *</label>
+                                    <input type="text" name="street_address" id="streeta" placeholder="Street address *">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="ck-single-i">
+                                    <label for="townc">Town / City *</label>
+                                    <input type="text" name="city" id="townc" placeholder="Town / City *">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="ck-single-i">
+                                    <label for="District">District *</label>
+                                    <input type="text" name="district" id="District" placeholder="District">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="ck-single-i">
+                                    <label for="postalzip">Postcode / ZIP (optional)*</label>
+                                    <input type="text" name="postcode" id="postalzip" placeholder="Postcode / ZIP (optional)*">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="ck-single-i">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" name="phone" id="phone" placeholder="Phone Number" value="{{ user_phone }}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="ck-single-i">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" name="email" id="email" value="{{ user_email }}" placeholder="Email Address">
+                                   
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="ck-single-i">
+                                    <label for="payment">Payment Method</label>
+                                    <select name="payment_method" id="payment">
+                                        <option value="1">Paypal</option>
+                                        <option value="2"> Credit Card</option>
+                                        <option value="3">Payoneer</option>
+                                        <option value="4"> Bank Transfer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="ck-single-i">
+                                    <label for="addin">Additional Information*</label>
+                                    <textarea name="additional_info" id="addin" placeholder="Additional Information"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="ck-single-i">
+                                    <h2>Your order & Total </h2>
+                                    {% comment %} <div class="sub-total">
+                                        <p class="text"> Sub Total</p>
+                                        <p class="text"> $ 180</p>
+                                    </div> {% endcomment %}
+                                    <div class="sub-total two">
+                                        <p class="text">Total</p>
+                                        <p class="text">₹{{ grand_total }}</p>
+                                    </div>
+                                    {% comment %} <button type="submit" class="button-1" type="submit">Place Order</button> {% endcomment %}
+                                    <button type="submit" class="btn btn-danger" type="submit">Order Now</button>
+
+                                    <input type="hidden" name="pay_with_phonepe" value="1">
+                                        <button type="submit" class="btn btn-primary">Pay Now </button>
+
+
+
+
+                                    <form method="post" action="">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary">Pay with PhonePe</button>
+                                    </form>
+
+                                    <form method="post" action="{% url 'Checkout' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="pay_with_phonepe" value="1">
+                                        <button type="submit" class="btn btn-primary">Pay </button>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- End Checkout Page Content -->
+<!-- Start Subscribe Area -->
+<section class="subscribe-area pt-100 pb-100" style="background-image: url('{% static 'assets/img/sub.png' %}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="subscribe-form">
+                    <h3>Subscribe Now!</h3>
+                    <p>Simple pricing plans. Unlimited web maintenance service</p>
+                    <form action="#">
+                        <input type="email" name="email" placeholder="Enter Your Email..">
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+
+</script>
+
+{% endblock digitalcheckout %}
